@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: "16"
 
-      - name: Install dependencies
+      - name: Install and Build dependencies
         run: |
           pnpm i
           pnpm build
