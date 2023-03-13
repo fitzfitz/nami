@@ -3,7 +3,7 @@ import { CustomFilter } from "@nami/core/customs";
 import { cleanObjects } from "@fitzzz/utils";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { FilterDataProps } from "@nami/core/customs/CustomFilter";
-import { SearchResult } from "@nami/app/filter";
+import { SearchResult } from "@nami/app/filters";
 import { BiLoaderAlt } from "react-icons/bi";
 
 const Filter = () => {
