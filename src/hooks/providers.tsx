@@ -20,7 +20,7 @@ const queryClient = new QueryClient({
 
 function Providers({ children }: Props) {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/nami">
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     </BrowserRouter>
   );

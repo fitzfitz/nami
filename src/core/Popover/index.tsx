@@ -115,7 +115,7 @@ const Popover = ({
             onTouchMove={handleUpdate}
             onTouchEnd={handleUpdate}
             onTouchCancel={handleUpdate}
-            className={`rounded-md bg-white shadow-md ${className}`}
+            className={`${className}`}
           >
             {children}
           </div>

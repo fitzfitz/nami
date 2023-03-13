@@ -5,7 +5,7 @@ const buttonStyles = cva("btn px-4 py-2 transition", {
   variants: {
     variant: {
       primary:
-        "bg-ocean-green-500 text-white border border-ocean-green-500 hover:border-ocean-green-600 hover:bg-ocean-green-600",
+        "bg-ocean-green-500 text-white border border-ocean-green-500 hover:border-ocean-green-400 hover:bg-ocean-green-400",
       success:
         "bg-green-600 text-white border border-green-600 hover:border-green-700 hover:bg-green-700",
       warning:

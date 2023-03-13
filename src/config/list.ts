@@ -12,11 +12,11 @@ export default {
   wordLength: [
     {
       label: "2 Kata",
-      value: 2,
+      value: "2",
     },
     {
       label: "3 Kata",
-      value: 3,
+      value: "3",
     },
   ],
   origin: [

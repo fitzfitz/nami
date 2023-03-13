@@ -1,17 +1,4 @@
-.search-button {
-  overflow: hidden;
-}
-
 .search-icon {
-  position: absolute;
-  left: 10px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 5px;
-  transform: scale(0);
-  opacity: 0;
-  transition: 0.3s ease-out;
   animation: zoom-out 0.3s ease-in-out forwards;
 }
 
@@ -21,9 +8,6 @@
 }
 
 .search-text {
-  display: inline-block;
-  position: relative;
-  left: 0;
   animation: slide-left 0.3s ease-in-out forwards;
 }
 
@@ -77,4 +61,16 @@
   100% {
     left: 0;
   }
+}
+
+.hamburger.is-active .line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.is-active .line:nth-child(1) {
+  transform: translateY(5.3px) rotate(45deg);
+}
+
+.hamburger.is-active .line:nth-child(3) {
+  transform: translateY(-5.3px) rotate(-45deg);
 }

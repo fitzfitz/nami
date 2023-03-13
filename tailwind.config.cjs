@@ -40,6 +40,24 @@ module.exports = {
           900: "#772e10",
         },
       },
+      keyframes: {
+        heartbeat: {
+          "0%": { transform: "scale(0.5)" },
+          "20%": { transform: "scale(0)" },
+          "40%": { transform: "scale(1.2)" },
+          "60%": { transform: "scale(1)" },
+          "70%": { transform: "scale(0.8)" },
+          "100%": { transform: "scale(1)" },
+        },
+        "heartbeat-empty": {
+          "0%": { transform: "scale(0.5) rotateX(90deg)" },
+          "50%": { transform: "scale(1) rotateX(0deg)" },
+        },
+      },
+      animation: {
+        loved: "heartbeat 0.5s",
+        unloved: "heartbeat-empty 0.5s",
+      },
     },
   },
   plugins: [],

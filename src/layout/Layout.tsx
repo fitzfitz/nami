@@ -8,7 +8,7 @@ import { ToastContainer } from "react-toastify";
 function Layout() {
   return (
     <>
-      <Box className="flex h-screen w-screen">
+      <Box className="flex h-screen w-screen overflow-auto">
         <Box className="relative flex min-h-screen w-0 flex-1 flex-col">
           <AppHeader />
           <AppMain />
