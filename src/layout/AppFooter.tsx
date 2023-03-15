@@ -4,7 +4,7 @@ import imgBushLeft from "@nami/assets/images/png/bush-left.png";
 
 const AppFooter = () => {
   return (
-    <footer className="relative mt-10 bg-[url('/assets/images/floor.png')] bg-cover bg-top p-6 text-center text-rose-bud sm:px-8">
+    <footer className="relative mt-10 bg-[url('/assets/images/floor.png')] bg-cover bg-top p-6 text-center text-xs text-rose-bud sm:px-8">
       Made nami with ❤️ for all parents
       <img
         src={imgBushRight}

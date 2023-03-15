@@ -8,10 +8,6 @@ module.exports = {
       },
       colors: {
         black: "#003349",
-        "nami-field": {
-          100: "#44BB89",
-          900: "#3EAC7E",
-        },
         "albescent-white": "#F7E4DE",
         "rose-bud": "#F7AFA7",
         "soft-cream": "#FCF5F3",
@@ -39,6 +35,28 @@ module.exports = {
           800: "#903710",
           900: "#772e10",
         },
+        greener: {
+          hover: "#42B786",
+          border: "#40B081",
+          default: "#3AA075",
+        },
+        yellowish: {
+          hover: "#FACB61",
+          "border-default": "#FAC652",
+          "border-hover": "#F9BF3E",
+          default: "#F9BF3C",
+        },
+        bluish: {
+          default: "#0765A7",
+          hover: "#0982D7",
+          "border-hover": "#0765A7",
+          lighter: "#097FD2",
+        },
+        "nami-field": {
+          default: "#3EAC7E",
+          hover: "#44BB89",
+          border: "#62C69C",
+        },
       },
       keyframes: {
         heartbeat: {
@@ -60,5 +78,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-inner-border")],
 };

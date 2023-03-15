@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { list } from "@nami/config";
 import SelectFilter from "./SelectFilter";
+import Button from "../Button";
+import { IoCloseCircle } from "react-icons/io5";
 
 export interface FilterDataProps {
   meaning: string;
@@ -31,15 +33,20 @@ const CustomFilter = ({ filterData, onSubmit }: FilterProps) => {
 
   return (
     <>
-      <div className="flex flex-col items-center gap-4 rounded-3xl bg-ocean-green-500 p-4 md:flex-row md:gap-2 md:rounded-full md:p-2">
-        <input
-          value={filter?.meaning || ""}
-          onChange={({ target: { value } }) =>
-            setFilterData({ meaning: value || undefined })
-          }
-          placeholder="Mengandung arti"
-          className="w-full rounded-full bg-nami-field-900 py-2 px-3 text-xl text-white outline-none transition-all placeholder:text-white/50 focus:bg-nami-field-100 md:w-48"
-        />
+      <div className="flex flex-col items-center gap-2 rounded-3xl bg-greener-default p-2 md:flex-row md:gap-2 md:rounded-full md:p-3">
+        <div className="group relative">
+          <input
+            value={filter?.meaning || ""}
+            onChange={({ target: { value } }) =>
+              setFilterData({ meaning: value || undefined })
+            }
+            placeholder="Mengandung arti"
+            className="w-full rounded-full bg-nami-field-default py-3 pl-4 pr-10 text-lg text-white caret-yellowish-default outline-none transition-all placeholder:text-white hover:bg-nami-field-hover focus:bg-nami-field-hover focus:inner-border-[1px] focus:inner-border-nami-field-border md:w-52"
+          />
+          <div className=" pointer-events-none invisible absolute inset-y-0 right-0 flex items-center pr-3 group-focus-within:first-of-type:visible group-hover:visible group-focus:visible">
+            <IoCloseCircle size={17} className="text-white" />
+          </div>
+        </div>
         <SelectFilter
           placeholder="Jenis Kelamin"
           data={list.gender}
@@ -58,7 +65,19 @@ const CustomFilter = ({ filterData, onSubmit }: FilterProps) => {
           value={filter?.origin}
           onChange={(e) => setFilterData({ origin: e })}
         />
-        <button
+        <Button
+          className="search-button flex items-center px-8 py-3"
+          variant={"yellow"}
+          onClick={() => onSubmit(filter)}
+        >
+          <span className="search-icon absolute left-2.5 mr-1.5 inline-flex scale-0 items-center justify-center opacity-0 transition duration-300 ease-in-out">
+            <BiSearch size={20} />
+          </span>
+          <span className="search-text relative left-0 inline-block text-lg">
+            Cari
+          </span>
+        </Button>
+        {/* <button
           onClick={() => onSubmit(filter)}
           className="search-button btn text-bold relative inline-flex w-full items-center justify-center overflow-hidden rounded-full border border-saffron-300 bg-saffron-300 px-4 py-2 text-xl font-bold text-black md:w-[5.5rem]"
         >
@@ -66,7 +85,7 @@ const CustomFilter = ({ filterData, onSubmit }: FilterProps) => {
             <BiSearch />
           </span>
           <span className="search-text relative left-0 inline-block">Cari</span>
-        </button>
+        </button> */}
       </div>
     </>
   );
