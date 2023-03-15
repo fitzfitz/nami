@@ -75,6 +75,9 @@ module.exports = {
       animation: {
         loved: "heartbeat 0.5s",
         unloved: "heartbeat-empty 0.5s",
+        "cloud-1": "cloud-1 13s linear infinite",
+        "cloud-2": "cloud-2 20s linear infinite",
+        "cloud-3": "cloud-3 9s linear infinite",
       },
     },
   },
