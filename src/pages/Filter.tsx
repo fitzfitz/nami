@@ -25,14 +25,16 @@ const Filter = () => {
           <BiLoaderAlt /> Memuat lebih banyak
         </button>
       </div>
-      <CustomFilter
-        filterData={filter}
-        onSubmit={(data) => {
-          cleanObjects(data, { nullIfEmpty: true })
-            ? navigate(`/filter?filter=${JSON.stringify(cleanObjects(data))}`)
-            : undefined;
-        }}
-      />
+      <div className="sticky bottom-5">
+        <CustomFilter
+          filterData={filter}
+          onSubmit={(data) => {
+            cleanObjects(data, { nullIfEmpty: true })
+              ? navigate(`/filter?filter=${JSON.stringify(cleanObjects(data))}`)
+              : undefined;
+          }}
+        />
+      </div>
     </div>
   );
 };

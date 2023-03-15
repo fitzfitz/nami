@@ -1,18 +1,25 @@
 import React, { useState } from "react";
 import { Button, Popover } from "@nami/core";
 import { Link } from "react-router-dom";
-import logo from "@nami/assets/images/svg/logo.svg";
+import { motion } from "framer-motion";
 import { app } from "@nami/config";
+import logo from "@nami/assets/images/svg/logo.svg";
 
 const AppHeader = () => {
   const [menu, setMenu] = useState<Element | null>(null);
   return (
     <header className="sticky top-0 flex h-[4.5rem] min-h-[4rem] items-center justify-between bg-soft-cream px-3.5 font-bold sm:px-8">
-      <Link to={"/"} className="flex items-center">
-        <span className="flex items-center self-center whitespace-nowrap font-rammetto text-xl font-semibold text-gray-700">
-          <img alt="" src={logo} height={43} />
-        </span>
-      </Link>
+      <motion.div
+        initial={{ x: -30, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ type: "spring", bounce: 0.5 }}
+      >
+        <Link to={"/"} className="flex items-center">
+          <span className="flex items-center self-center whitespace-nowrap font-rammetto text-xl font-semibold text-gray-700">
+            <img alt="" src={logo} height={43} />
+          </span>
+        </Link>
+      </motion.div>
       <div className="flex gap-3">
         <Button variant="yellow" rounded={"full"}>
           Donasi

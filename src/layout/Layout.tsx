@@ -4,6 +4,7 @@ import AppMain from "./AppMain";
 import AppFooter from "./AppFooter";
 import { Box } from "@nami/core";
 import { ToastContainer } from "react-toastify";
+import { motion } from "framer-motion";
 import cloud from "@nami/assets/images/svg/cloud.svg";
 
 function Layout() {
@@ -11,19 +12,19 @@ function Layout() {
     <>
       <Box className="relative flex h-screen w-screen overflow-auto">
         <Box className="absolute left-0 top-0 -z-30 h-full w-full overflow-hidden">
-          <img
+          <motion.img
             src={cloud}
             height="46px"
             alt="nami-clouds"
             className="absolute top-[15%] left-[15%] animate-cloud-1"
           />
-          <img
+          <motion.img
             src={cloud}
             height="46px"
             alt="nami-clouds"
             className="absolute top-[45%] left-[85%] animate-cloud-2"
           />
-          <img
+          <motion.img
             src={cloud}
             height="46px"
             alt="nami-clouds"

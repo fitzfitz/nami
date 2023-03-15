@@ -25,7 +25,7 @@ export default {
       value: "islamic",
     },
     {
-      label: "Western",
+      label: "Western Western Western",
       value: "western",
     },
   ],

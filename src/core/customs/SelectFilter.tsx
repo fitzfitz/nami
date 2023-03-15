@@ -1,7 +1,7 @@
 import React from "react";
 import Select, { components } from "react-select";
 import { BaseSelect } from "@nami/utils/types/base";
-import { AiOutlineCaretDown, AiOutlineCaretUp } from "react-icons/ai";
+import { AiOutlineCaretUp } from "react-icons/ai";
 import { IoCloseCircle, IoCheckmarkCircle } from "react-icons/io5";
 
 interface Props {
@@ -15,7 +15,8 @@ interface Props {
 const SelectFilter = ({ placeholder, onChange, data, value, name }: Props) => {
   return (
     <Select
-      className="border-[0 0 0, #000] w-full text-lg md:w-auto"
+      menuPlacement="auto"
+      className="border-[0 0 0, #000] relative w-full text-lg md:w-48"
       classNames={{
         container: () => ``,
         control: ({ isFocused, hasValue }) =>
@@ -24,17 +25,15 @@ const SelectFilter = ({ placeholder, onChange, data, value, name }: Props) => {
             isFocused &&
             "bg-nami-field-hover inner-border-[1px] inner-border-nami-field-border"
           } ${hasValue && ""}`,
-        valueContainer: () => `flex items-center`,
+        valueContainer: () => `flex items-center flex-1 w-0`,
         placeholder: () => "!text-white/70 !truncate",
-        singleValue: () => "!text-white",
+        singleValue: () => "!text-white truncate",
         clearIndicator: () => "!text-white",
-        option: ({ isSelected }) =>
-          `cursor-pointer py-2 px-3 rounded-xl text-lg flex items-center justify-between gap-2 hover:bg-yellowish-hover ${
-            isSelected ? "bg-yellowish-hover" : ""
-          }`,
-        menu: () => "!bg-transparent !shadow-none !w-auto",
+        option: () =>
+          `cursor-pointer py-2 px-3 rounded-xl text-lg flex justify-between gap-2 hover:bg-yellowish-hover`,
+        menu: () => "!bg-transparent",
         menuList: () =>
-          "p-3 mt-2 rounded-3xl bg-yellowish-default inner-border-2 inner-border-yellowish-border-default flex flex-col gap-2",
+          "p-3 -my-1 rounded-3xl bg-yellowish-default inner-border-2 inner-border-yellowish-border-default flex flex-col gap-0.5",
         dropdownIndicator: () => "!p-1.5",
       }}
       styles={{
@@ -70,6 +69,10 @@ const SelectFilter = ({ placeholder, onChange, data, value, name }: Props) => {
           margin: 0,
           transition: "all",
         }),
+        menu: (baseStyles) => ({
+          ...baseStyles,
+          boxShadow: "none",
+        }),
         menuList: () => ({
           maxHeight: "300px",
           overflowY: "auto",
@@ -86,20 +89,27 @@ const SelectFilter = ({ placeholder, onChange, data, value, name }: Props) => {
       components={{
         DropdownIndicator: (props) => (
           <components.DropdownIndicator {...props}>
-            {/* eslint-disable-next-line react/prop-types */}
-            {props.selectProps.menuIsOpen ? (
-              <AiOutlineCaretUp size={13} className="text-white" />
+            <AiOutlineCaretUp
+              size={13}
+              className={`text-white ${
+                // eslint-disable-next-line react/prop-types
+                !props.selectProps.menuIsOpen && "rotate-180"
+              } transition-all duration-[250ms]`}
+            />
+            {/* { ? (
             ) : (
               <AiOutlineCaretDown size={13} className="text-white" />
-            )}
+            )} */}
           </components.DropdownIndicator>
         ),
         Option: (props) => (
           <components.Option {...props}>
             {/* eslint-disable-next-line react/prop-types */}
-            <span className="whitespace-nowrap">{props.label}</span>
+            <span>{props.label}</span>
             {/* eslint-disable-next-line react/prop-types */}
-            {props.isSelected ? <IoCheckmarkCircle size={18} /> : null}
+            {props.isSelected ? (
+              <IoCheckmarkCircle className="relative top-1 min-h-[18px] min-w-[18px]" />
+            ) : null}
           </components.Option>
         ),
         ClearIndicator: (props) => (
