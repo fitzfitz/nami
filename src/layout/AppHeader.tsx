@@ -13,7 +13,7 @@ const AppHeader = () => {
           <img alt="" src={logo} height={43} />
         </span>
       </Link>
-      <div className="flex gap-4">
+      <div className="flex gap-3">
         <Button variant="yellow" rounded={"full"}>
           Donasi
         </Button>
