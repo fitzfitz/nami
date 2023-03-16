@@ -93,7 +93,7 @@ const Popover = ({
         <div
           aria-hidden
           onClick={() => onClose()}
-          className={`fixed top-0 left-0 z-50 h-full w-full bg-black bg-opacity-10 transition ${
+          className={`fixed top-0 left-0 z-50 h-full w-full bg-black transition ${
             overlay ? "bg-opacity-10" : "bg-opacity-0"
           }`}
         >
