@@ -69,7 +69,7 @@ const Dialog: React.FC<DialogProps> = ({
         <div role="presentation" className="root fixed inset-0 z-[1300]">
           <div
             role="presentation"
-            className={`overlay fixed inset-0 flex items-center justify-center overflow-auto bg-black/20 transition-opacity delay-[0] duration-200`}
+            className={`overlay fixed inset-0 flex items-center justify-center overflow-auto bg-[#003349]/70 transition-opacity delay-[0] duration-200`}
             style={{ opacity: showDialog ? 1 : 0 }}
             onClick={handleOverlayClick}
             onKeyDown={handleKeyDown}

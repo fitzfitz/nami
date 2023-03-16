@@ -10,7 +10,7 @@ import cloud from "@nami/assets/images/svg/cloud.svg";
 function Layout() {
   return (
     <>
-      <Box className="relative flex h-screen w-screen overflow-auto">
+      <Box className="relative flex h-screen w-screen">
         <Box className="absolute left-0 top-0 -z-30 h-full w-full overflow-hidden">
           <motion.img
             src={cloud}
@@ -31,7 +31,10 @@ function Layout() {
             className="absolute top-[75%] left-[5%] animate-cloud-3"
           />
         </Box>
-        <Box className="relative flex min-h-screen w-0 flex-1 flex-col">
+        <Box
+          id="container"
+          className="relative flex min-h-screen w-0 flex-1 flex-col overflow-auto"
+        >
           <AppHeader />
           <AppMain />
           <AppFooter />

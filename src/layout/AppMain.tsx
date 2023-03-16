@@ -1,10 +1,11 @@
 import React from "react";
 import { Navigate, Route, Routes, Outlet } from "react-router-dom";
 import routes, { RoutesType } from "@nami/routes";
+import ScrollToTop from "@nami/core/customs/ScrollToTop";
 
 const AppMain = () => {
   return (
-    <div className="w-full flex-1 p-5 sm:p-8">
+    <div id="main" className="w-full flex-1 p-5 sm:p-8">
       <Routes>
         {routes.map(({ component, path, children }: RoutesType) => (
           <Route key={path} path={path} element={<Outlet />}>
@@ -29,6 +30,7 @@ const AppMain = () => {
         ))}
         <Route path="*" element={<Navigate to={"/"} replace />} />
       </Routes>
+      <ScrollToTop />
     </div>
   );
 };

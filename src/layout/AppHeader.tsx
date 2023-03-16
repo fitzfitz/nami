@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { app } from "@nami/config";
 import logo from "@nami/assets/images/svg/logo.svg";
+import { MenuButton } from "@nami/core/customs/MenuButton";
 
 const AppHeader = () => {
   const [menu, setMenu] = useState<Element | null>(null);
   return (
-    <header className="sticky top-0 flex h-[4.5rem] min-h-[4rem] items-center justify-between bg-soft-cream px-3.5 font-bold sm:px-8">
+    <header className="sticky top-0 flex h-[4.5rem] min-h-[4.5rem] items-center justify-between overflow-hidden bg-soft-cream px-3.5 font-bold sm:px-8">
       <motion.div
         initial={{ x: -30, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
@@ -21,27 +22,48 @@ const AppHeader = () => {
         </Link>
       </motion.div>
       <div className="flex gap-3">
-        <Button variant="yellow" rounded={"full"}>
-          Donasi
-        </Button>
-        <Button variant="green" rounded={"full"}>
-          Kritik & Saran
-        </Button>
-        <Button
-          variant="green"
-          onClick={(e) => setMenu(e.currentTarget)}
-          rounded={"full"}
+        <motion.div
+          initial={{ x: 50, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ type: "spring", bounce: 0.5, delay: 0.25 }}
         >
-          <div className={`hamburger -my-1 ${menu ? "is-active" : ""}`}>
-            <span className="line mx-auto my-1 block h-0.5 w-5 bg-white transition"></span>
-            <span className="line mx-auto my-1 block h-0.5 w-5 bg-white transition"></span>
-            <span className="line mx-auto my-1 block h-0.5 w-5 bg-white transition"></span>
-          </div>
-        </Button>
+          <Button variant="yellow" rounded={"full"}>
+            Donasi
+          </Button>
+        </motion.div>
+        <motion.div
+          initial={{ x: 50, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ type: "spring", bounce: 0.5, delay: 0.3 }}
+        >
+          <Button variant="green" rounded={"full"}>
+            Kritik & Saran
+          </Button>
+        </motion.div>
+        <motion.div
+          initial={{ x: 50, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ type: "spring", bounce: 0.5, delay: 0.35 }}
+        >
+          <Button
+            variant="green"
+            onClick={(e) => setMenu(e.currentTarget)}
+            rounded={"full"}
+          >
+            <MenuButton
+              isOpen={!!menu}
+              strokeWidth="2"
+              color="#FFF"
+              lineProps={{ strokeLinecap: "round" }}
+              transition={{ type: "spring", stiffness: 260, damping: 20 }}
+              width="24"
+              height="24"
+            />
+          </Button>
+        </motion.div>
       </div>
       <Popover
         anchorRef={menu}
-        overlay
         placement="bottom-end"
         onClose={() => setMenu(null)}
       >

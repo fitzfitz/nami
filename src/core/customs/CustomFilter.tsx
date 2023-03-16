@@ -4,6 +4,7 @@ import { list } from "@nami/config";
 import SelectFilter from "./SelectFilter";
 import Button from "../Button";
 import { IoCloseCircle } from "react-icons/io5";
+import { motion } from "framer-motion";
 
 export interface FilterDataProps {
   meaning: string;
@@ -33,7 +34,12 @@ const CustomFilter = ({ filterData, onSubmit }: FilterProps) => {
 
   return (
     <>
-      <div className="relative flex flex-col items-center gap-2 rounded-3xl bg-greener-default p-2 inner-border-2 inner-border-greener-border md:flex-row md:gap-2 md:rounded-full md:p-3">
+      <motion.div
+        initial={{ y: 10, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.2 }}
+        className="relative flex flex-col items-center gap-2 rounded-3xl bg-greener-default p-2 inner-border-2 inner-border-greener-border md:flex-row md:gap-2 md:rounded-full md:p-3"
+      >
         <div className="group relative">
           <input
             value={filter?.meaning || ""}
@@ -89,7 +95,7 @@ const CustomFilter = ({ filterData, onSubmit }: FilterProps) => {
           </span>
           <span className="search-text relative left-0 inline-block">Cari</span>
         </button> */}
-      </div>
+      </motion.div>
     </>
   );
 };

@@ -10,7 +10,7 @@ function Generate() {
       "http://localhost:5000/ask-fitz/generate-names",
       { prompt, numNames },
     );
-    console.log(response.data);
+    // console.log(response.data);
     setNames(names.concat(response.data));
   };
 

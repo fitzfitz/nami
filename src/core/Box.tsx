@@ -1,16 +1,15 @@
 import React from "react";
 
-interface Props {
+interface Props extends Omit<Partial<HTMLElement>, "children"> {
   component?: React.ElementType<any>;
   sx?: React.CSSProperties;
   children?: React.ReactNode;
-  className?: string;
 }
 
-const Box = ({ component = "div", sx, className, children }: Props) => {
+const Box = ({ component = "div", sx, children, style, ...other }: Props) => {
   const Component = component;
   return (
-    <Component style={sx} className={className || ""}>
+    <Component style={{ ...style, ...sx }} {...other}>
       {children}
     </Component>
   );

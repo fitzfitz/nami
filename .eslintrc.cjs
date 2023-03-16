@@ -42,13 +42,13 @@ module.exports = {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
 
-    // "no-console": "error",
+    "no-console": "warn",
     "prettier/prettier": [
       "warn",
       {
         endOfLine: "auto",
         singleQuote: false,
-        trailingComma: "all"
+        trailingComma: "all",
       },
     ],
   },

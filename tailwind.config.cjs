@@ -51,6 +51,7 @@ module.exports = {
           hover: "#0982D7",
           "border-hover": "#0765A7",
           lighter: "#097FD2",
+          lightest: "#199AF5",
         },
         "nami-field": {
           default: "#3EAC7E",

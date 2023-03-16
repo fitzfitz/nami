@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const AppFooter = () => {
   return (
-    <div className="overflow-hidden">
+    <div className="relative">
       <motion.footer
         initial={{ translateY: "300%" }}
         animate={{ translateY: 0 }}

@@ -25,19 +25,13 @@ const Home = () => {
           <span className="text-saffron-300">lebih mudah!</span>
         </motion.div>
       </div>
-      <motion.div
-        initial={{ y: 10, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.2 }}
-      >
-        <CustomFilter
-          onSubmit={(data) => {
-            cleanObjects(data, { nullIfEmpty: true })
-              ? navigate(`/filter?filter=${JSON.stringify(cleanObjects(data))}`)
-              : undefined;
-          }}
-        />
-      </motion.div>
+      <CustomFilter
+        onSubmit={(data) => {
+          cleanObjects(data, { nullIfEmpty: true })
+            ? navigate(`/filter?filter=${JSON.stringify(cleanObjects(data))}`)
+            : undefined;
+        }}
+      />
     </div>
   );
 };
