@@ -16,19 +16,19 @@ function Layout() {
             src={cloud}
             height="46px"
             alt="nami-clouds"
-            className="absolute top-[15%] left-[15%] animate-cloud-1"
+            className="absolute top-[15%] right-[15%] animate-cloud-1"
           />
           <motion.img
             src={cloud}
             height="46px"
             alt="nami-clouds"
-            className="absolute top-[45%] left-[85%] animate-cloud-2"
+            className="absolute top-[45%] right-[85%] animate-cloud-2"
           />
           <motion.img
             src={cloud}
             height="46px"
             alt="nami-clouds"
-            className="absolute top-[75%] left-[5%] animate-cloud-3"
+            className="absolute top-[75%] right-[5%] animate-cloud-3"
           />
         </Box>
         <Box
