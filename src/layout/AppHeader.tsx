@@ -9,11 +9,15 @@ import { MenuButton } from "@nami/core/customs/MenuButton";
 const AppHeader = () => {
   const [menu, setMenu] = useState<Element | null>(null);
   return (
-    <header className="sticky top-0 flex h-[4.5rem] min-h-[4.5rem] items-center justify-between overflow-hidden bg-soft-cream px-3.5 font-bold sm:px-8">
+    <motion.header
+      initial={{ y: -50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      className="sticky top-0 flex h-[4.5rem] min-h-[4.5rem] items-center justify-between overflow-hidden bg-soft-cream px-3.5 font-bold sm:px-8"
+    >
       <motion.div
-        initial={{ x: -30, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ type: "spring", bounce: 0.5 }}
+      // initial={{ x: -30, opacity: 0 }}
+      // animate={{ x: 0, opacity: 1 }}
+      // transition={{ type: "spring", bounce: 0.5 }}
       >
         <Link to={"/"} className="flex items-center">
           <span className="flex items-center self-center whitespace-nowrap font-rammetto text-xl font-semibold text-gray-700">
@@ -23,27 +27,27 @@ const AppHeader = () => {
       </motion.div>
       <div className="flex gap-3">
         <motion.div
-          initial={{ x: 50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ type: "spring", bounce: 0.5, delay: 0.25 }}
+        // initial={{ x: 50, opacity: 0 }}
+        // animate={{ x: 0, opacity: 1 }}
+        // transition={{ type: "spring", bounce: 0.5, delay: 0.25 }}
         >
           <Button variant="yellow" rounded={"full"}>
             Donasi
           </Button>
         </motion.div>
         <motion.div
-          initial={{ x: 50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ type: "spring", bounce: 0.5, delay: 0.3 }}
+        // initial={{ x: 50, opacity: 0 }}
+        // animate={{ x: 0, opacity: 1 }}
+        // transition={{ type: "spring", bounce: 0.5, delay: 0.3 }}
         >
           <Button variant="green" rounded={"full"}>
             Kritik & Saran
           </Button>
         </motion.div>
         <motion.div
-          initial={{ x: 50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ type: "spring", bounce: 0.5, delay: 0.35 }}
+        // initial={{ x: 50, opacity: 0 }}
+        // animate={{ x: 0, opacity: 1 }}
+        // transition={{ type: "spring", bounce: 0.5, delay: 0.35 }}
         >
           <Button
             variant="green"
@@ -82,7 +86,7 @@ const AppHeader = () => {
           </div>
         </div>
       </Popover>
-    </header>
+    </motion.header>
   );
 };
 

@@ -1,37 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import { CustomFilter } from "@nami/core/customs";
-import { useNavigate } from "react-router-dom";
 import { cleanObjects } from "@fitzzz/utils";
-import { motion } from "framer-motion";
+import { FilterDataProps } from "@nami/core/customs/CustomFilter";
+import { useGetNamesInfinite } from "@nami/app/filters";
+import {
+  InitialSearch,
+  Results,
+  SearchError,
+  Welcome,
+} from "@nami/app/Dashboard";
 
 const Home = () => {
-  const navigate = useNavigate();
+  const [filter, setFilter] = useState<FilterDataProps | undefined>();
+
+  const {
+    data: names,
+    isInitialLoading,
+    isFetchingNextPage,
+    isError,
+    refetch,
+    fetchNextPage,
+  } = useGetNamesInfinite(filter);
+
   return (
     <div className="flex h-full flex-col items-center justify-center gap-8">
-      <div className="mb-2 text-center font-rammetto text-2xl font-bold leading-[5.125rem] tracking-tight md:text-[3.375rem] ">
-        <motion.div
-          initial={{ opacity: 0, x: -90 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="whitespace-pre-wrap"
-        >
-          <span className="text-black">Cari</span>{" "}
-          <span className="text-ocean-green-500">inspirasi nama</span>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, x: 90 }}
-          animate={{ opacity: 1, x: 0 }}
-        >
-          <span className="text-black">jadi</span>{" "}
-          <span className="text-saffron-300">lebih mudah!</span>
-        </motion.div>
-      </div>
-      <CustomFilter
-        onSubmit={(data) => {
-          cleanObjects(data, { nullIfEmpty: true })
-            ? navigate(`/filter?filter=${JSON.stringify(cleanObjects(data))}`)
-            : undefined;
-        }}
+      <Results
+        show={!!names && !isInitialLoading && !isError}
+        data={names?.pages?.flat() || []}
+        isLoadMore={isFetchingNextPage}
+        fetchNextPage={fetchNextPage}
       />
+      <InitialSearch show={isInitialLoading} />
+      <SearchError show={isError} refetch={refetch} />
+      <Welcome show={!filter} />
+      <div className="sticky bottom-5">
+        <CustomFilter
+          onSubmit={(data) => {
+            const filterSubmitted = cleanObjects(data, { nullIfEmpty: true });
+            setFilter(filterSubmitted || undefined);
+          }}
+        />
+      </div>
     </div>
   );
 };

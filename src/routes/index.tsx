@@ -2,7 +2,6 @@ import React from "react";
 
 const Home = React.lazy(() => import("@nami/pages/Home"));
 const Filter = React.lazy(() => import("@nami/pages/Filter"));
-const Generate = React.lazy(() => import("@nami/pages/generate"));
 
 export type RoutesType = {
   path: string;
@@ -21,11 +20,6 @@ const routes = [
     path: "/filter",
     component: <Filter />,
     title: "Filter",
-  },
-  {
-    path: "/generate",
-    component: <Generate />,
-    title: "Generate",
   },
 ];
 

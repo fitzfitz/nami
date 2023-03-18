@@ -35,9 +35,9 @@ const CustomFilter = ({ filterData, onSubmit }: FilterProps) => {
   return (
     <>
       <motion.div
-        initial={{ y: 10, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.2 }}
+        initial={{ y: 50, scale: 0.5, opacity: 0 }}
+        animate={{ y: 0, scale: 1, opacity: 1 }}
+        transition={{ type: "spring", delay: 0.5, duration: 0.8 }}
         className="relative flex flex-col items-center gap-2 rounded-3xl bg-greener-default p-2 inner-border-2 inner-border-greener-border md:flex-row md:gap-2 md:rounded-full md:p-3"
       >
         <div className="group relative">

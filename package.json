@@ -16,7 +16,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@fitzzz/utils": "^0.2.0",
+    "@fitzzz/utils": "^0.3.0",
     "@popperjs/core": "^2.11.6",
     "@tanstack/react-query": "^4.24.10",
     "@tanstack/react-query-persist-client": "^4.24.10",

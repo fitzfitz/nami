@@ -1,101 +1,75 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { CustomFilter } from "@nami/core/customs";
-import { cleanObjects, uuid } from "@fitzzz/utils";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { cleanObjects, strToJson } from "@fitzzz/utils";
+import { useSearchParams } from "react-router-dom";
 import { FilterDataProps } from "@nami/core/customs/CustomFilter";
-import { SearchResult } from "@nami/app/filters";
+import { SearchResult, useGetNamesInfinite } from "@nami/app/filters";
 import { BiLoaderAlt } from "react-icons/bi";
-
-const data = [
-  {
-    id: uuid.generate("easy"),
-    name: "Abizar bahi",
-    meaning: "Sang pemersatu bangsa",
-    newIndex: 1,
-  },
-  {
-    id: uuid.generate("easy"),
-    name: "Abizar bahi",
-    meaning: "Sang pemersatu bangsa",
-    newIndex: 2,
-  },
-  {
-    id: uuid.generate("easy"),
-    name: "Abizar bahi",
-    meaning: "Sang pemersatu bangsa",
-    newIndex: 3,
-  },
-  {
-    id: uuid.generate("easy"),
-    name: "Abizar bahi",
-    meaning: "Sang pemersatu bangsa",
-    newIndex: 4,
-  },
-  {
-    id: uuid.generate("easy"),
-    name: "Abizar bahi",
-    meaning: "Sang pemersatu bangsa",
-    newIndex: 5,
-  },
-];
+import { motion } from "framer-motion";
+import { IoReload } from "react-icons/io5";
 
 const Filter = () => {
-  const [dataState, setDataState] = useState<typeof data>(data);
-  const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [isLoadingMore, setIsLoadingMore] = useState<boolean>(false);
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const filterParams = searchParams.get("filter");
   const filter: FilterDataProps | undefined = filterParams
-    ? JSON.parse(filterParams)
+    ? strToJson(filterParams)
     : undefined;
+  const [filterData, setFilterData] = useState<FilterDataProps | undefined>(
+    filter,
+  );
 
-  const addMoreData = () => {
-    setIsLoadingMore(true);
-    setTimeout(() => {
-      setDataState([
-        ...dataState.map((item) => ({ ...item, isNew: false })),
-        ...data.map((item, newIndex) => ({
-          ...item,
-          id: uuid.generate("easy"),
-          newIndex,
-        })),
-      ]);
-      setIsLoadingMore(false);
-    }, 1500);
-  };
-
-  useEffect(() => {
-    setTimeout(() => setIsLoading(false), 1500);
-  }, []);
+  const {
+    data: names,
+    isInitialLoading,
+    isFetchingNextPage,
+    isError,
+    refetch,
+    fetchNextPage,
+  } = useGetNamesInfinite(filterData);
 
   return (
     <div className="flex h-full flex-col items-center justify-center gap-8">
-      {!isLoading ? (
+      {names && !isInitialLoading && !isError ? (
         <div className="flex w-full flex-col items-center gap-5">
-          <div className="text-center font-rammetto text-lg font-bold md:text-2xl md:leading-[2.5625rem]">
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.25 }}
+            className="text-center font-rammetto text-lg font-bold md:text-2xl md:leading-[2.5625rem]"
+          >
             Menampilkan hasil
-          </div>
+          </motion.div>
           <SearchResult
-            data={dataState}
-            isLoadMore={isLoadingMore}
-            onMore={addMoreData}
+            data={names?.pages?.flat()}
+            isLoadMore={isFetchingNextPage}
+            onMore={fetchNextPage}
           />
         </div>
       ) : null}
-      {isLoading ? (
+      {isInitialLoading ? (
         <div className="flex h-full flex-1 items-center justify-center gap-3">
           <BiLoaderAlt className="animate-spin" size={18} />
           <span className="text-base">Sedang meracik nama...</span>
         </div>
       ) : null}
+      {isError ? (
+        <button
+          onClick={() => refetch()}
+          className="flex h-full flex-1 items-center justify-center gap-3"
+        >
+          <IoReload size={18} />
+          <span className="text-base">Error, muat ulang...</span>
+        </button>
+      ) : null}
       <div className="sticky bottom-5">
         <CustomFilter
           filterData={filter}
           onSubmit={(data) => {
-            cleanObjects(data, { nullIfEmpty: true })
-              ? navigate(`/filter?filter=${JSON.stringify(cleanObjects(data))}`)
-              : undefined;
+            const resData = cleanObjects(data, { nullIfEmpty: true });
+            setSearchParams(undefined);
+            if (resData) {
+              setFilterData(resData || undefined);
+            }
           }}
         />
       </div>

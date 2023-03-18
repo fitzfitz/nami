@@ -17,7 +17,7 @@ const AppFooter = () => {
       <motion.img
         initial={{ right: "-300%", position: "absolute" }}
         animate={{ right: 0 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
+        transition={{ duration: 0.5 }}
         src={imgBushRight}
         alt=""
         className="absolute -right-10 bottom-10 -z-10 w-48 md:right-0 md:bottom-0 md:w-60"
@@ -25,7 +25,7 @@ const AppFooter = () => {
       <motion.img
         initial={{ left: "-300%", position: "absolute" }}
         animate={{ left: 0 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
+        transition={{ duration: 0.5 }}
         src={imgBushLeft}
         alt=""
         className="absolute -left-5 bottom-10 -z-10 w-32 md:left-0 md:bottom-0 md:w-64"

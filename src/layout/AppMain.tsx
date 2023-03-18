@@ -5,7 +5,7 @@ import ScrollToTop from "@nami/core/customs/ScrollToTop";
 
 const AppMain = () => {
   return (
-    <div id="main" className="w-full flex-1 p-5 sm:p-8">
+    <div id="main" className="z-10 w-full flex-1 p-5 sm:p-8">
       <Routes>
         {routes.map(({ component, path, children }: RoutesType) => (
           <Route key={path} path={path} element={<Outlet />}>

@@ -5,9 +5,10 @@ import axios, {
 } from "axios";
 import useUserStore from "@nami/store/useUserStore";
 import { useLayoutStore } from "@nami/store";
+import { middleware } from "@nami/config";
 
 const instance = axios.create({
-  baseURL: "https://thrift-api.themonograf.com/api",
+  baseURL: `${middleware.baseApi}`,
 });
 
 const onRequest = (
