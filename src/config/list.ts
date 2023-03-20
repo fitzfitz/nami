@@ -25,7 +25,15 @@ export default {
       value: "islamic",
     },
     {
-      label: "Western Western Western",
+      label: "Jawa Kuno",
+      value: "jawa kuno",
+    },
+    {
+      label: "Sansekerta",
+      value: "sansekerta",
+    },
+    {
+      label: "Western",
       value: "western",
     },
   ],
