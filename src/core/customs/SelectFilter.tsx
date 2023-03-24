@@ -26,8 +26,8 @@ const SelectFilter = ({ placeholder, onChange, data, value, name }: Props) => {
             "bg-nami-field-hover inner-border-[1px] inner-border-nami-field-border"
           } ${hasValue && ""}`,
         valueContainer: () => `flex items-center flex-1 w-0`,
-        placeholder: () => "!text-white/70 !truncate",
-        singleValue: () => "!text-white truncate",
+        placeholder: () => "!text-white/70 !truncate !font-medium",
+        singleValue: () => "!text-white truncate !font-medium",
         clearIndicator: () => "!text-white",
         option: () =>
           `cursor-pointer py-2 px-3 rounded-xl text-lg flex justify-between gap-2 hover:bg-yellowish-hover`,

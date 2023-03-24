@@ -47,7 +47,7 @@ const CustomFilter = ({ filterData, onSubmit }: FilterProps) => {
               setFilterData({ meaning: value || undefined })
             }
             placeholder="Mengandung arti"
-            className="w-full rounded-full bg-nami-field-default py-3 pl-4 pr-10 text-lg text-white caret-yellowish-default outline-none transition-all placeholder:text-white/70 hover:bg-nami-field-hover focus:bg-nami-field-hover focus:inner-border-[1px] focus:inner-border-nami-field-border md:w-52"
+            className="w-full rounded-full bg-nami-field-default py-3 pl-4 pr-10 text-lg font-medium text-white caret-yellowish-default outline-none transition-all placeholder:text-white/70 hover:bg-nami-field-hover focus:bg-nami-field-hover focus:inner-border-[1px] focus:inner-border-nami-field-border md:w-52"
           />
           <button
             onClick={() => setFilterData({ meaning: undefined })}
