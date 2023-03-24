@@ -1,8 +1,8 @@
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface Props {
-  show: boolean;
+  show?: boolean;
 }
 
 const Welcome = ({ show }: Props) => {
@@ -14,13 +14,14 @@ const Welcome = ({ show }: Props) => {
           animate={{ y: 0, scale: 1, opacity: 1 }}
           transition={{
             type: "spring",
-            delay: 1,
+            delay: 2.4,
             duration: 0.8,
           }}
           exit={{
             position: "fixed",
             opacity: 0,
-            transition: { duration: 0.5, delay: 0 },
+            y: -300,
+            transition: { duration: 1, delay: 0 },
           }}
           className="mb-2 text-center font-rammetto text-2xl font-bold leading-[5.125rem] tracking-tight md:text-[3.375rem] "
         >

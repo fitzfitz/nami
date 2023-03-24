@@ -9,12 +9,14 @@ import {
   SearchError,
   Welcome,
 } from "@nami/app/Dashboard";
+import { motion } from "framer-motion";
 
 const Home = () => {
   const [filter, setFilter] = useState<FilterDataProps | undefined>();
 
   const {
     data: names,
+    isFetching,
     isInitialLoading,
     isFetchingNextPage,
     isError,
@@ -23,16 +25,32 @@ const Home = () => {
   } = useGetNamesInfinite(filter);
 
   return (
-    <div className="flex h-full flex-col items-center justify-center gap-8">
-      <Results
-        show={!!names && !isInitialLoading && !isError}
-        data={names?.pages?.flat() || []}
-        isLoadMore={isFetchingNextPage}
-        fetchNextPage={fetchNextPage}
-      />
-      <InitialSearch show={isInitialLoading} />
-      <SearchError show={isError} refetch={refetch} />
+    <div className="relative flex h-full flex-col items-center justify-center gap-8">
       <Welcome show={!filter} />
+      {filter ? (
+        <motion.div
+          initial={{ height: 100, opacity: 0.2 }}
+          animate={{ height: "100%", opacity: 1 }}
+          transition={{ delay: 0.3, duratation: 1 }}
+          exit={{
+            height: 0,
+            opacity: 0,
+            transition: { delay: 0, duratation: 1 },
+          }}
+          className="flex h-full w-full items-center justify-center"
+        >
+          <InitialSearch show={isInitialLoading} />
+          <Results
+            show={!!names && !isInitialLoading}
+            isError={!!isError}
+            data={names?.pages?.flat() || []}
+            isLoadMore={isFetching || isFetchingNextPage}
+            fetchNextPage={fetchNextPage}
+            refetch={refetch}
+          />
+          <SearchError show={!names && isError} refetch={refetch} />
+        </motion.div>
+      ) : null}
       <div className="sticky bottom-5">
         <CustomFilter
           onSubmit={(data) => {

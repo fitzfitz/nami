@@ -27,7 +27,7 @@ const MenuButton = ({
     },
     opened: {
       rotate: 45,
-      translateY: 2,
+      translateY: 1.5,
     },
   };
   const center = {
@@ -45,7 +45,7 @@ const MenuButton = ({
     },
     opened: {
       rotate: -45,
-      translateY: -2,
+      translateY: -1.6,
     },
   };
   lineProps = {
@@ -73,8 +73,8 @@ const MenuButton = ({
       <motion.line
         x1="0"
         x2={unitWidth}
-        y1="0"
-        y2="0"
+        y1="0.5"
+        y2="0.5"
         variants={top}
         {...lineProps}
       />
@@ -89,8 +89,8 @@ const MenuButton = ({
       <motion.line
         x1="0"
         x2={unitWidth}
-        y1="4"
-        y2="4"
+        y1="3.5"
+        y2="3.5"
         variants={bottom}
         {...lineProps}
       />

@@ -4,14 +4,23 @@ import NameItem from "../components/NameItem";
 import { AnimatePresence, motion } from "framer-motion";
 import ModalShare from "../components/ModalShare";
 import { BiLoaderAlt } from "react-icons/bi";
+import { IoReload } from "react-icons/io5";
 
 interface Props {
   data?: { id: string; name: string; meaning: string; newIndex: number }[];
   isLoadMore: boolean;
+  isError: boolean;
   onMore?: () => void;
+  refetch?: () => void;
 }
 
-const SearchResult = ({ data, isLoadMore, onMore }: Props) => {
+const SearchResult = ({
+  data,
+  isLoadMore,
+  isError,
+  onMore,
+  refetch,
+}: Props) => {
   const [share, setShare] = useState<string | null>(null);
   return (
     <>
@@ -28,7 +37,7 @@ const SearchResult = ({ data, isLoadMore, onMore }: Props) => {
         ))}
         <div className="relative h-16 w-full p-[0.625rem]">
           <AnimatePresence>
-            {!isLoadMore ? (
+            {!isError && !isLoadMore ? (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -54,6 +63,21 @@ const SearchResult = ({ data, isLoadMore, onMore }: Props) => {
                 <div className="flex h-full flex-1 items-center justify-center gap-3 py-2.5">
                   <BiLoaderAlt className="animate-spin" size={18} />
                   <span className="text-base">Memuat nama lainnya...</span>
+                </div>
+              </motion.div>
+            ) : null}
+            {!isLoadMore && isError ? (
+              <motion.div
+                onClick={refetch}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="absolute flex w-full cursor-pointer justify-center gap-[0.625rem]"
+              >
+                <div className="flex h-full flex-1 items-center justify-center gap-3 py-2.5">
+                  <IoReload size={18} />
+                  <span className="text-base">Error, muat ulang...</span>
                 </div>
               </motion.div>
             ) : null}

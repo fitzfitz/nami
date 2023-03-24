@@ -10,9 +10,10 @@ const AppHeader = () => {
   const [menu, setMenu] = useState<Element | null>(null);
   return (
     <motion.header
-      initial={{ y: -50, opacity: 0 }}
+      initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="sticky top-0 flex h-[4.5rem] min-h-[4.5rem] items-center justify-between overflow-hidden bg-soft-cream px-3.5 font-bold sm:px-8"
+      transition={{ duration: 0.8, type: "spring" }}
+      className="sticky top-0 z-50 flex h-[4.5rem] min-h-[4.5rem] items-center justify-between overflow-hidden bg-soft-cream px-3.5 font-bold sm:px-8"
     >
       <motion.div
       // initial={{ x: -30, opacity: 0 }}
@@ -26,15 +27,6 @@ const AppHeader = () => {
         </Link>
       </motion.div>
       <div className="flex gap-3">
-        <motion.div
-        // initial={{ x: 50, opacity: 0 }}
-        // animate={{ x: 0, opacity: 1 }}
-        // transition={{ type: "spring", bounce: 0.5, delay: 0.25 }}
-        >
-          <Button variant="yellow" rounded={"full"}>
-            Donasi
-          </Button>
-        </motion.div>
         <motion.div
         // initial={{ x: 50, opacity: 0 }}
         // animate={{ x: 0, opacity: 1 }}

@@ -41,6 +41,7 @@ const Filter = () => {
           </motion.div>
           <SearchResult
             data={names?.pages?.flat()}
+            isError={isError}
             isLoadMore={isFetchingNextPage}
             onMore={fetchNextPage}
           />

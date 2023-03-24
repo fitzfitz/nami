@@ -108,13 +108,16 @@ const SelectFilter = ({ placeholder, onChange, data, value, name }: Props) => {
             <span>{props.label}</span>
             {/* eslint-disable-next-line react/prop-types */}
             {props.isSelected ? (
-              <IoCheckmarkCircle className="relative top-1 min-h-[18px] min-w-[18px]" />
+              <IoCheckmarkCircle
+                size={20}
+                className="relative top-1 min-h-[18px] min-w-[18px]"
+              />
             ) : null}
           </components.Option>
         ),
         ClearIndicator: (props) => (
           <components.ClearIndicator {...props}>
-            <IoCloseCircle size={17} className="text-white" />
+            <IoCloseCircle size={20} className="text-white" />
           </components.ClearIndicator>
         ),
         IndicatorSeparator: () => <></>,
