@@ -5,6 +5,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import ModalShare from "../components/ModalShare";
 import { BiLoaderAlt } from "react-icons/bi";
 import { IoReload } from "react-icons/io5";
+import DetailDialog from "@nami/app/Dashboard/components/DetailDialog";
+import useDashboardStore from "@nami/app/Dashboard/store";
 
 interface Props {
   data?: { id: string; name: string; meaning: string; newIndex: number }[];
@@ -22,6 +24,7 @@ const SearchResult = ({
   refetch,
 }: Props) => {
   const [share, setShare] = useState<string | null>(null);
+  const { detail, setDetail } = useDashboardStore();
   return (
     <>
       <div className="flex w-[23.5rem] flex-col items-center">
@@ -33,6 +36,7 @@ const SearchResult = ({
             name={name.name}
             meaning={name.meaning}
             onShare={(id) => setShare(id)}
+            onClick={(name) => setDetail(name)}
           />
         ))}
         <div className="relative h-16 w-full p-[0.625rem]">
@@ -85,6 +89,7 @@ const SearchResult = ({
         </div>
       </div>
       <ModalShare open={!!share} onClose={() => setShare(null)} />
+      <DetailDialog open={!!detail} data={detail} onClose={() => setDetail()} />
     </>
   );
 };

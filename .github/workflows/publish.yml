@@ -27,12 +27,23 @@ jobs:
         run: |
           pnpm i
           pnpm build
-    
-      - name: Push
-        uses: s0/git-publish-subdir-action@develop
+      
+      - name: Deploy to another repository 🚀
+        uses: cpina/github-action-push-to-another-repository@main
         env:
-          REPO: self
-          BRANCH: build # The branch name where you want to push the assets
-          FOLDER: dist # The directory where your assets are generated
-          GITHUB_TOKEN: ${{ secrets.API_TOKEN_GITHUB }} # GitHub will automatically add this - you don't need to bother getting a token
-          MESSAGE: "Build: ({sha}) {msg}" # The commit message
+          API_TOKEN_GITHUB: ${{ secrets.NAMI_GITHUB_TOKEN }}
+        with:
+          source-directory: "dist"
+          destination-github-username: "jakavg"
+          destination-repository-name: "nanu"
+          user-email: jakapermadi94@gmail.com
+          target-branch: main
+    
+      # - name: Push
+      #   uses: s0/git-publish-subdir-action@develop
+      #   env:
+      #     REPO: self
+      #     BRANCH: build # The branch name where you want to push the assets
+      #     FOLDER: dist # The directory where your assets are generated
+      #     GITHUB_TOKEN: ${{ secrets.API_TOKEN_GITHUB }} # GitHub will automatically add this - you don't need to bother getting a token
+      #     MESSAGE: "Build: ({sha}) {msg}" # The commit message
